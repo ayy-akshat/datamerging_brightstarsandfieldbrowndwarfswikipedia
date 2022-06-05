@@ -4,6 +4,9 @@ import pandas as pd
 fbd_df = pd.read_csv("field_brown_dwarfs.csv")
 star_df = pd.read_csv("stars.csv")
 
+
+
+# cleaning
 fbd_df = fbd_df[fbd_df['distance'].notna()]
 fbd_df = fbd_df[fbd_df['mass'].notna()]
 fbd_df = fbd_df[fbd_df['radius'].notna()]
@@ -12,6 +15,9 @@ star_df = star_df[star_df['distance'].notna()]
 star_df = star_df[star_df['mass'].notna()]
 star_df = star_df[star_df['radius'].notna()]
 
+
+
+# merging
 fbd = fbd_df.to_numpy()
 star = star_df.to_numpy()
 
@@ -19,10 +25,10 @@ for i in range(1, len(fbd)):
     fbd[i][2] = fbd[i][2] * 0.000954588
     fbd[i][3] = fbd[i][3] * 0.102763
 
-
 final = [
     ['name', 'distance', 'mass', 'radius']
 ]
+
 for i in fbd:
     final.append(i)
 
